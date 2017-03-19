@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%p [%t] %c{1}.%M(%L) | %m%n" />
+		</layout>
+	</appender>
+	<appender name="CRAWlERFILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/web/resin/logs/gamedb/crawler.log"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%-5p] [%t] %c {%F:%L} - %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="INFO"></param>
+		</filter>
+	</appender>
+	 <appender name="SERVICEFILE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="/web/resin/logs/gamedb/gamedb.log"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd'.log'"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%-5p] [%t] %c {%F:%L} - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+        	<param name="levelMin" value="INFO"/>
+        </filter>
+    </appender>
+
+	<root>
+		<priority value="Info" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+</log4j:configuration>
